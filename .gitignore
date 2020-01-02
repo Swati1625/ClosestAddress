@@ -1,0 +1,75 @@
+## NuGet Packages Non Executable Files
+
+*.orig
+*.Cache
+x64/
+[Oo]bj/
+[Bb]in/
+[Bb]in_x64/
+[Dd]ebug/
+[Bb]uild/
+[Rr]elease/
+
+
+# Sitecore
+viewstate/
+MediaCache/
+IconCache/
+temp/
+upload/
+ConnectionStrings.Debug.config
+DataFolder.Debug.config
+
+# User-specific files
+*.suo
+*.user
+*.sln.docstates
+
+# Build results
+.builds
+*_i.c
+*_p.c
+*.bak
+*.bak.*
+*.[Cc]ache
+*.dbmdl
+*.ilk
+*.log
+*.lib
+*.meta
+*.obj
+*.pch
+*.pdb
+*.pgc
+*.pgd
+*.rsp
+*.sbr
+*.swp
+*.tlb
+*.tli
+*.tlh
+*.tmp
+*.vspscc
+*.vssscc
+[Bb]uild[Ll]og.*
+ipch/
+
+# Visual Studio profiler
+*.psess
+*.vsp
+.vs
+
+# ReSharper is a .NET coding add-in
+_ReSharper.*
+_ReSharper*/
+*.resharper
+*.resharper.user
+
+# Nuget
+packages/
+!packages/repositories.config
+/*/packages/
+/*/*/packages/
+
+
+
