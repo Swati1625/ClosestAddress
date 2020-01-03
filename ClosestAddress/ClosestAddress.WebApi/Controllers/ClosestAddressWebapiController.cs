@@ -1,6 +1,7 @@
 ﻿using ClosestAddress.Constants;
-using ClosestAddress.WebApi.BAL;
+using ClosestAddress.WebApi.Interfaces;
 using ClosestAddress.WebApi.Models;
+using ClosestAddress.WebApi.Services;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
@@ -15,19 +16,22 @@ namespace ClosestAddress.WebApi.Controllers
     public class ClosestAddressWebapiController : ApiController
     {
         private static readonly log4net.ILog log = log4net.LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
-
+        private IAddresses AddressesServices;
+        public ClosestAddressWebapiController(IAddresses addressesServices)
+        {
+            this.AddressesServices = addressesServices;
+        }
+        public ClosestAddressWebapiController()
+        {
+        }
         [HttpGet]
         public IHttpActionResult Get(string originAddress)
         {
-
             List<Address> addresses = new List<Address>();
-            //using (var balObj = new Addresses())
-            //{
-            var balObj = new Addresses();
             var response = new AddressResponse();
             try
             {
-                var list = balObj.GetAllAddresses();
+                var list = AddressesServices.GetAllAddresses();
                 foreach (var destinationAddress in list)
                 {
                     string km = GetTopLocation(originAddress, destinationAddress.Name);
@@ -35,19 +39,17 @@ namespace ClosestAddress.WebApi.Controllers
                     {
                         if (km.Split(' ').Length > 0 && !string.IsNullOrEmpty(km.Split(' ')[0]))
                         {
-                            var item = new Address
+                            addresses.Add(new Address
                             {
                                 KM = Convert.ToInt32(km.Split(' ')[0]),
                                 Name = destinationAddress.Name
-                            };
-                            addresses.Add(item);
+                            });
                         }
                     }
                 }
                 if (addresses.Count > 0)
                 {
                     addresses = addresses.OrderBy(x => x.KM).Take(Convert.ToInt32(AddressConstant.AddressCount)).ToList();
-
                 }
                 response.AddressResults = addresses;
                 response.ResultCount = addresses.Count;
@@ -56,7 +58,6 @@ namespace ClosestAddress.WebApi.Controllers
             {
                 log.Error(ex.Message);
             }
-            //};
             return new JsonResult<AddressResponse>(response, new JsonSerializerSettings(), Encoding.UTF8, this);
         }
         protected string GetTopLocation(string originAddress, string destinationAddress)
@@ -64,6 +65,8 @@ namespace ClosestAddress.WebApi.Controllers
             string distance = string.Empty;
             try
             {
+                //https://maps.googleapis.com/maps/api/distancematrix/json?origins=Boston,MA|Charlestown,MA&destinations=Lexington,MA|Concord,MA&departure_time=now&key=YOUR_API_KEY
+
                 var requestUri = string.Format("https://maps.googleapis.com/maps/api/distancematrix/json" + "?origins={0}&destinations={1}&key={2}",
                    Uri.EscapeDataString(originAddress), Uri.EscapeDataString(destinationAddress), "AIzaSyByr898hPiRTzISYBMw13TnNjNmHyIkvH8");
                 var request = WebRequest.Create(requestUri);

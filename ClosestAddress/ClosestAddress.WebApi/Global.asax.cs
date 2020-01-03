@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Castle.Windsor;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -11,6 +12,7 @@ namespace ClosestAddress.WebApi
     {
         protected void Application_Start()
         {
+            IWindsorContainer container = new WindsorContainer();
             GlobalConfiguration.Configure(WebApiConfig.Register);
         }
     }
