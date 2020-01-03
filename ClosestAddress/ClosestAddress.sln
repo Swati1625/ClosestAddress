@@ -9,6 +9,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ClosestAddress", "ClosestAd
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ClosestAddress.WebApi", "ClosestAddress.WebApi\ClosestAddress.WebApi.csproj", "{A04171D8-38C8-46D7-B09C-E9F356B7499A}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ClosestAddress.Constants", "ClosestAddress.Constants\ClosestAddress.Constants.csproj", "{663ED525-4958-443A-9AEB-AEAA0A071721}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +29,10 @@ Global
 		{A04171D8-38C8-46D7-B09C-E9F356B7499A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A04171D8-38C8-46D7-B09C-E9F356B7499A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A04171D8-38C8-46D7-B09C-E9F356B7499A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{663ED525-4958-443A-9AEB-AEAA0A071721}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{663ED525-4958-443A-9AEB-AEAA0A071721}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{663ED525-4958-443A-9AEB-AEAA0A071721}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{663ED525-4958-443A-9AEB-AEAA0A071721}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

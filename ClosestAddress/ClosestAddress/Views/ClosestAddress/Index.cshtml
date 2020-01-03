@@ -2,11 +2,14 @@
     ViewBag.Title = "Home Page";
 }
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.19.0/axios.min.js"></script>
-<input type="text" value="" id="txtAddress" /><br /><br />
-<input type="button" value="Submit" id="btnSearch" /><br /><br />
+
 
 <div id="closest-address-results" data-dataURL="http://closestaddressapi/api/ClosestAddressWebapi">
-    <div> {{result}}</div>
-
+    <input type="text" value="" id="txtAddress" v-model="searchAddress" />
+    <input type="button" value="Submit" id="btnSearch" v-on:click="searchClick" />
+    <div v-for="address in results">
+        <div> {{address.Name}}</div>
+        <div> {{address.KM}}</div>
+    </div>
 </div>
 @Scripts.Render("~/bundles/closestaddress")

@@ -1,21 +1,27 @@
-﻿if (document.getElementById("closest-address-results") != undefined) {
+﻿if (document.getElementById("closest-address-results") !== undefined) {
     var App = new Vue({
         el: '#closest-address-results',
         data: {
-            message: 'Hello Vue!',
-            result: ''
+            results: [],
+            searchAddress:''
         },
         mounted: function () {
             this.dataURL = this.$el.getAttribute('data-dataURL');
-            this.fetchData();
+           
         },
         methods: {
             fetchData: function () {
+                this.dataURL += "?originAddress=" + this.searchAddress;
                 var self = this;
                 axios.get(this.dataURL)
                     .then(function (response) {
-                        self.result = response.data;
+                        self.results = response.data.AddressResults;
                     });
+            },
+            searchClick: function () {
+                if (this.searchAddress !== "") {
+                    this.fetchData();
+                }
             }
         }
     });
