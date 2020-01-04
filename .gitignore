@@ -1,7 +1,6 @@
 ## NuGet Packages Non Executable Files
 
 *.orig
-*.Cache
 x64/
 [Oo]bj/
 [Bb]in/
@@ -11,9 +10,7 @@ x64/
 [Rr]elease/
 
 
-# Sitecore
-viewstate/
-MediaCache/
+
 IconCache/
 temp/
 upload/
@@ -31,7 +28,7 @@ DataFolder.Debug.config
 *_p.c
 *.bak
 *.bak.*
-*.[Cc]ache
+
 *.dbmdl
 *.ilk
 *.log

@@ -43,11 +43,11 @@ namespace ClosestAddress.WebApi.Controllers
             }
             return new JsonResult<AddressResponse>(response, new JsonSerializerSettings(), Encoding.UTF8, this);
         }
-        public List<Address> GetClosestAddress(string originAddress)
+        public List<Address> GetClosestAddress(string address)
         {
             var list = AddressesServices.GetAllAddresses();
             string allAddresses = String.Join("|", list);
-            var addresses = GetTopLocation(originAddress, allAddresses);
+            var addresses = GetTopLocation(address, allAddresses);
             if (addresses.Count > 0)
             {
                 addresses = addresses.OrderBy(x => x.KM).Take(AddressConstant.AddressCount).ToList();

@@ -106,7 +106,6 @@
   <ItemGroup>
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Interfaces\IAddresses.cs" />
-    <Compile Include="IoC\ServiceInstaller.cs" />
     <Compile Include="Models\Response.cs" />
     <Compile Include="Services\Addresses.cs" />
     <Compile Include="Controllers\ClosestAddressWebapiController.cs" />
