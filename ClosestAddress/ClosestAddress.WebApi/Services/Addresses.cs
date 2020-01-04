@@ -11,11 +11,6 @@ namespace ClosestAddress.WebApi.Services
     public class Addresses : IAddresses
     {
         CustomCache CustomCache = new CustomCache();
-        //private ICustomCache CustomCache;
-        //public Addresses(ICustomCache customCache)
-        //{
-        //    this.CustomCache = customCache;
-        //}
         private static readonly log4net.ILog log = log4net.LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
         public List<string> GetAllAddresses()
         {

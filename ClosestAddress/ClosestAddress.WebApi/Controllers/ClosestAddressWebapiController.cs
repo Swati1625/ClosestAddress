@@ -16,14 +16,6 @@ namespace ClosestAddress.WebApi.Controllers
     {
         private static readonly log4net.ILog log = log4net.LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
         Addresses AddressesServices = new Addresses();
-        //private IAddresses AddressesServices;
-        //public ClosestAddressWebapiController(IAddresses addressesServices)
-        //{
-        //    this.AddressesServices = addressesServices;
-        //}
-        //public ClosestAddressWebapiController()
-        //{
-        //}
         [HttpGet]
         public IHttpActionResult Get(string originAddress)
         {
