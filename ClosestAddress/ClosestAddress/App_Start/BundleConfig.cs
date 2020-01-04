@@ -1,5 +1,4 @@
-﻿using System.Web;
-using System.Web.Optimization;
+﻿using System.Web.Optimization;
 
 namespace ClosestAddress
 {
@@ -8,6 +7,7 @@ namespace ClosestAddress
         // For more information on bundling, visit https://go.microsoft.com/fwlink/?LinkId=301862
         public static void RegisterBundles(BundleCollection bundles)
         {
+            bundles.UseCdn = true;
             bundles.Add(new ScriptBundle("~/bundles/jquery").Include(
                         "~/Scripts/jquery-{version}.js"));
 
@@ -15,7 +15,9 @@ namespace ClosestAddress
                         "~/Scripts/jquery.validate*"));
 
             bundles.Add(new ScriptBundle("~/bundles/vue").Include(
-                        "~/Scripts/vue*"));
+                        "~/Scripts/vue.js"));
+            bundles.Add(new ScriptBundle("~/bundles/axios").Include(
+                       "~/Scripts/axios.min.js"));
             bundles.Add(new ScriptBundle("~/bundles/closestaddress").Include(
                       "~/Scripts/closestaddress*"));
             // Use the development version of Modernizr to develop with and learn from. Then, when you're

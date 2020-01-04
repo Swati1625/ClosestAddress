@@ -1,7 +1,6 @@
 ﻿using ClosestAddress.Cache;
 using ClosestAddress.Constants;
 using ClosestAddress.WebApi.Interfaces;
-using ClosestAddress.WebApi.Models;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -9,19 +8,18 @@ using System.Web;
 
 namespace ClosestAddress.WebApi.Services
 {
-    public class Addresses: IAddresses
+    public class Addresses : IAddresses
     {
-        private ICustomCache CustomCache;
-        public Addresses(ICustomCache customCache)
-        {
-            this.CustomCache = customCache;
-        }
-
-
+        CustomCache CustomCache = new CustomCache();
+        //private ICustomCache CustomCache;
+        //public Addresses(ICustomCache customCache)
+        //{
+        //    this.CustomCache = customCache;
+        //}
         private static readonly log4net.ILog log = log4net.LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
-        public List<Address> GetAllAddresses()
+        public List<string> GetAllAddresses()
         {
-            var addressList = new List<Address>();
+            var addressList = new List<string>();
             try
             {
                 string cacheKey = CustomCache.GetCacheKey(AddressConstant.AddressCacheKey).ToString();
@@ -47,10 +45,7 @@ namespace ClosestAddress.WebApi.Services
                                     string address = reader.ReadLine().Trim();
                                     if (!string.IsNullOrWhiteSpace(address))
                                     {
-                                        addressList.Add(new Address
-                                        {
-                                            Name = address
-                                        });
+                                        addressList.Add(address);
                                     }
                                 }
                             }
@@ -58,7 +53,7 @@ namespace ClosestAddress.WebApi.Services
                     }
                     if (addressList != null && addressList.Count > 0)
                     {
-                        CustomCache.Add(addressList, cacheKey, Convert.ToDouble(AddressConstant.cacheDurantion));
+                        CustomCache.Add(addressList, cacheKey, Convert.ToDouble(AddressConstant.CacheDurantion));
                     }
                 }
             }

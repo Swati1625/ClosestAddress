@@ -47,13 +47,25 @@
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Web.Http, Version=5.2.4.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="UnitTest1.cs" />
+    <Compile Include="ClosestAddressTest.cs" />
+    <Compile Include="Constants\AddressConstants.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\ClosestAddress.Constants\ClosestAddress.Constants.csproj">
+      <Project>{663ed525-4958-443a-9aeb-aeaa0a071721}</Project>
+      <Name>ClosestAddress.Constants</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ClosestAddress.WebApi\ClosestAddress.WebApi.csproj">
+      <Project>{a04171d8-38c8-46d7-b09c-e9f356b7499a}</Project>
+      <Name>ClosestAddress.WebApi</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets" Condition="Exists('$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets')" />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

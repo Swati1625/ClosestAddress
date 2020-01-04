@@ -3,7 +3,8 @@
         el: '#closest-address-results',
         data: {
             results: [],
-            searchAddress:''
+            searchAddress: '',
+            isDisplayMessage:false
         },
         mounted: function () {
             this.dataURL = this.$el.getAttribute('data-dataURL');
@@ -21,6 +22,10 @@
             searchClick: function () {
                 if (this.searchAddress !== "") {
                     this.fetchData();
+                    this.isDisplayMessage = false;
+                }
+                else {
+                    this.isDisplayMessage = true;
                 }
             }
         }

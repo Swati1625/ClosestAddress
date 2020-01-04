@@ -8,6 +8,6 @@ namespace ClosestAddress.WebApi.Interfaces
 {
     public interface IAddresses
     {
-         List<Address> GetAllAddresses();
+         List<string> GetAllAddresses();
     }
 }
