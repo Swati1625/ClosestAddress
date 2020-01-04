@@ -31,5 +31,12 @@
             </tbody>
         </table>
     </div>
+    <div class="overlay" v-if="isDisplayLoader">
+        <a href="javascript:void(0)" class="closebtn"></a>
+        <div class="overlay-content">
+            Loading...
+        </div>
+    </div>
 </div>
+
 @Scripts.Render("~/bundles/closestaddress")

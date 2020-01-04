@@ -4,7 +4,8 @@
         data: {
             results: [],
             searchAddress: '',
-            isDisplayMessage:false
+            isDisplayMessage: false,
+            isDisplayLoader:false
         },
         mounted: function () {
             this.dataURL = this.$el.getAttribute('data-dataURL');
@@ -17,14 +18,17 @@
                 axios.get(this.dataURL)
                     .then(function (response) {
                         self.results = response.data.AddressResults;
+                        self.isDisplayLoader = false;
                     });
             },
             searchClick: function () {
                 if (this.searchAddress !== "") {
+                    this.isDisplayLoader = true;
                     this.fetchData();
                     this.isDisplayMessage = false;
                 }
                 else {
+                    this.isDisplayLoader = false;
                     this.isDisplayMessage = true;
                 }
             }
