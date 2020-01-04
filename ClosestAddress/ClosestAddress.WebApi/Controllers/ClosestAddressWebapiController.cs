@@ -16,6 +16,11 @@ namespace ClosestAddress.WebApi.Controllers
     {
         private static readonly log4net.ILog log = log4net.LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
         Addresses AddressesServices = new Addresses();
+        /// <summary>
+        /// Get closest address from origin in sort order in json format
+        /// </summary>
+        /// <param name="originAddress"></param>
+        /// <returns>IHttpActionResult</returns>
         [HttpGet]
         public IHttpActionResult Get(string originAddress)
         {
@@ -35,6 +40,11 @@ namespace ClosestAddress.WebApi.Controllers
             }
             return new JsonResult<AddressResponse>(response, new JsonSerializerSettings(), Encoding.UTF8, this);
         }
+        /// <summary>
+        /// Get closest address from origin in sort order
+        /// </summary>
+        /// <param name="originAddress"></param>
+        /// <returns>List of Addresses</returns>
         public List<Address> GetClosestAddress(string address)
         {
             var list = AddressesServices.GetAllAddresses();
@@ -46,6 +56,12 @@ namespace ClosestAddress.WebApi.Controllers
             }
             return addresses;
         }
+        /// <summary>
+        /// Call google distance matrix api and get results in KM
+        /// </summary>
+        /// <param name="originAddress"></param>
+        /// <param name="destinationAddresses"></param>
+        /// <returns>List of Addresses</returns>
         private List<Address> GetTopLocation(string originAddress, string destinationAddresses)
         {
             string distance = string.Empty;

@@ -10,6 +10,9 @@ namespace ClosestAddress.Tests
     [TestClass]
     public class ClosestAddressTest
     {
+        /// <summary>
+        /// Get all addresses: it should return list of addresses
+        /// </summary>
         [TestMethod]
         public void GetAllAddress_ShouldReturnResult()
         {
@@ -17,6 +20,9 @@ namespace ClosestAddress.Tests
             var result = addresses.GetAllAddresses();
             Assert.IsNotNull(result);
         }
+        /// <summary>
+        /// Should return top closest address
+        /// </summary>
         [TestMethod]
         public void GetClosestAddress_ShouldReturnResult()
         {
@@ -24,6 +30,9 @@ namespace ClosestAddress.Tests
             var result = controller.GetClosestAddress(AddressConstants.OriginAddress);
             Assert.IsNotNull(result);
         }
+        /// <summary>
+        /// Should return top 5 closest address
+        /// </summary>
         [TestMethod]
         public void GetClosestAddress_ShouldReturnFiveResult()
         {
@@ -31,6 +40,9 @@ namespace ClosestAddress.Tests
             var result = controller.GetClosestAddress(AddressConstants.OriginAddress);
             Assert.AreEqual(result.Count, AddressConstant.AddressCount);
         }
+        /// <summary>
+        /// Should return top closest address in sort order
+        /// </summary>
         [TestMethod]
         public void GetClosestAddress_ShouldReturnNearestResult()
         {

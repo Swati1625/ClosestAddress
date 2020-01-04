@@ -7,6 +7,11 @@ namespace ClosestAddress.Cache
     public  class CustomCache : ICustomCache
     {
         private const string Separator = "|";
+        /// <summary>
+        /// Append multiple key for cache
+        /// </summary>
+        /// <param name="keyComponents"></param>
+        /// <returns></returns>
         public  string GetCacheKey(params object[] keyComponents)
         {
             var cacheKey = new StringBuilder();

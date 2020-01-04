@@ -12,6 +12,10 @@ namespace ClosestAddress.WebApi.Services
     {
         CustomCache CustomCache = new CustomCache();
         private static readonly log4net.ILog log = log4net.LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
+        /// <summary>
+        /// Read addressed from txt file
+        /// </summary>
+        /// <returns>List of strings</returns>
         public List<string> GetAllAddresses()
         {
             var addressList = new List<string>();
